@@ -1,0 +1,65 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body,
+html {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #000;
+}
+
+#app {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+}
+
+#wallpaper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    /* Poné acá tu fondo de pantalla real */
+    background: url('fondo.jpeg') center center / cover no-index;
+    z-index: 1;
+}
+
+#card-container {
+    position: absolute;
+    z-index: 10;
+    width: 100px;
+    height: 100px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    touch-action: none;
+}
+
+#folded-card {
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+    transition: transform 0.1s ease-out;
+    /* Suaviza el movimiento del celu */
+}
+
+#folded-card img {
+    width: 200%;
+    height: 200%;
+    /* Para que parezca doblada */
+    object-fit: cover;
+    filter: contrast(1.1) brightness(0.9);
+}
+
+/* Animación de salida rápida */
+.exit-left {
+    transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+    transform: translateX(-1000px) rotate(-45deg) !important;
+    opacity: 0;
+}
