@@ -10,6 +10,8 @@ html {
     height: 100%;
     overflow: hidden;
     background: #000;
+    position: fixed;
+    /* Evita que rebote el scroll en iPhone */
 }
 
 #app {
@@ -20,46 +22,52 @@ html {
 
 #wallpaper {
     position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    /* Poné acá tu fondo de pantalla real */
-    background: url('fondo.jpeg') center center / cover no-index;
+    /* RUTA CORREGIDA */
+    background: url('fondo.jpeg') center center / cover no-repeat;
     z-index: 1;
 }
 
 #card-container {
     position: absolute;
     z-index: 10;
-    width: 100px;
-    height: 100px;
+    /* Por encima del fondo */
+    width: 90px;
+    /* Tamaño de una carta doblada en 4 */
+    height: 120px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     touch-action: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #folded-card {
     width: 100%;
     height: 100%;
     background: #fff;
-    border-radius: 5px;
+    border-radius: 6px;
     overflow: hidden;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
-    transition: transform 0.1s ease-out;
-    /* Suaviza el movimiento del celu */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+    /* Borde blanco finito como la carta real */
+    border: 3px solid white;
 }
 
 #folded-card img {
     width: 200%;
     height: 200%;
-    /* Para que parezca doblada */
     object-fit: cover;
-    filter: contrast(1.1) brightness(0.9);
+    display: block;
 }
 
-/* Animación de salida rápida */
+/* Animación de salida explosiva hacia la izquierda */
 .exit-left {
-    transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
-    transform: translateX(-1000px) rotate(-45deg) !important;
+    transition: all 0.25s cubic-bezier(0.55, 0.055, 0.675, 0.19) !important;
+    transform: translate(-150vw, -50%) rotate(-120deg) !important;
     opacity: 0;
 }
